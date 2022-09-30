@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Istalamos o prisma, rodamos o comando "npx prisma init", configuramos o .env e esse schema
+//Criamos um schema para tabela "links" que recebe um um registro Link, ela contem id, title e url... 
+
+model Link {
+  id    Int    @id @default(autoincrement())
+  title String
+  url   String
+
+  @@map("links")
+}
+
+//Quando rodamos o comando "npx prisma db push" ele criará essa tabela definida acima no banco de dados...
+//depois rodar o "npx prisma generate"
