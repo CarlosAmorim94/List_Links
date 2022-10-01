@@ -8,6 +8,7 @@ import { RequestHandler } from "micro";
 
 const cors = Cors();
 
+//NextJS não interpretar o body da requisição, deixar com graphQL
 export const config = {
   api: {
     bodyParser: false,
@@ -31,4 +32,5 @@ const handler: NextApiHandler = async (req, res) => {
 
   return apolloHandler(req, res);
 };
+
 export default cors(handler as RequestHandler);
